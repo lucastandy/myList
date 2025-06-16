@@ -44,7 +44,7 @@ export const style = StyleSheet.create({
         color:themes.colors.gray,
         marginTop:20
     },
-    BoxInput:{
+    boxInput:{
         width:'100%',
         height:40,
         borderWidth:1,
