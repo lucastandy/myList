@@ -7,8 +7,11 @@ import {MaterialIcons, Octicons} from '@expo/vector-icons';
 import { themes } from "../../global/themes";
 import { Input } from "../../components/input";
 import { Button } from "../../components/Button";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 export function Login() {
+
+    const navigation = useNavigation<NavigationProp<any>>();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,17 +24,14 @@ export function Login() {
             if(!email || !password){
                 Alert.alert('Atenção','Informe os campos obrigatórios!');
             }
-            setTimeout(()=>{
-                if(email == 'admin@gmail.com' && password == 'admin'){
-                    Alert.alert('Logado com sucesso!');
-                }else{
-                    Alert.alert('Usuário não encontrado!');
-                }
-                setLoading(false);
-            },3000);
+
+            navigation.reset({routes:[{name:'BottomRoutes'}]});
+            
             
         } catch (error) {
             console.log(error);
+        }finally{
+            setLoading(false);
         }
     }
 
